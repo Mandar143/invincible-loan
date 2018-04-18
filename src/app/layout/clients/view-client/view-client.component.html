@@ -1,0 +1,27 @@
+
+  <table class="table table-striped table-bordered">
+    <thead class="bg-primary">
+      <tr class="">
+        <th>Client Name</th>
+        <th>Mobile No.</th>
+        <th>Country</th>
+        <th>Email</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let clientData of clientData">
+        <td>{{clientData.cname}}</td>
+        <td>{{clientData.mnumber}}</td>
+        <td>{{clientData.city}}</td>
+        <td>{{clientData.email}}</td>
+        <td>
+            <a class="btn btn-primary" [routerLink]="['view']" >View</a>
+            <a class="btn btn-primary" [routerLink]="['add-clients']" [queryParams]="{id: clientData.client_id}">Edit</a>
+            <a class="btn btn-primary" (click)="onDelete(clientData.client_id)" >Delete</a>
+      </td>
+      </tr>      
+    </tbody>
+  </table>
+
+

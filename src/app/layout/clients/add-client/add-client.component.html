@@ -1,0 +1,101 @@
+
+    <form class="" #frm="ngForm" (ngSubmit)="register(frm)">
+      <div class="col-md-12">
+          <fieldset><legend class="text-center">Personal Information <span class="req"></span></legend>
+          
+          <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">Active Group</span>
+              <input type="text" class="form-control" name="cname" #cname="ngModel" ngModel placeholder="Client Name" aria-describedby="basic-addon1">
+          </div>
+          
+        </fieldset><br><br>
+      </div>
+        
+      <div class="row">
+        <div class="col-md-6">
+            
+            <fieldset><legend class="text-center">Primary Address <span class="req"></span></legend>
+
+            <div class="form-group">
+            <label for="paddress"><span class="req">* </span> Primary Address: </label>
+                    <input required type="text" name="paddress" #paddress="ngModel" ngModel  class="form-control phone" maxlength="60"/> 
+            </div>
+
+            <div class="form-group"> 	 
+                <label for="saddress"><span class="req">* </span> Secondary Address: </label>
+                    <input class="form-control" type="text" name="saddress" #saddress="ngModel" ngModel required /> 
+                        <div id="errFirst"></div>    
+            </div>
+
+            <div class="form-group">
+                <label for="city"><span class="req">* </span> City: </label> 
+                    <input class="form-control" type="text" name="city" #city="ngModel" ngModel  required />  
+                        <div id="errLast"></div>
+            </div>
+
+            
+
+            <div class="form-group">
+                <label for="zipcode"><span class="req">* </span> Zip Code: </label> 
+                    <input class="form-control" type="text" name="zipcode" #zipcode="ngModel" ngModel required />  
+                        <div id="errLast"></div>
+            </div>
+
+            
+
+            <div class="form-group">
+        
+                <input type="hidden"  name="client_id" />
+                <hr>
+
+               </div>
+
+            </fieldset>
+            <!-- </form>ends register form -->
+
+        </div><!-- ends col-6 -->
+   
+        <div class="col-md-6">
+              <!-- <form action="" method="post" id="fileForm" role="form"> -->
+                <fieldset><legend class="text-center">Contact Information<span class="req"></span></legend>
+    
+                <div class="form-group">
+                <label for="phonenumber"><span class="req">* </span> Phone Number: </label>
+                        <input required type="text" name="phonenumber" #phonenumber="ngModel" ngModel class="form-control phone" maxlength="28" /> 
+                </div>
+
+                <div class="form-group">
+                    <label for="mnumber"><span class="req">* </span> Mobile Number: </label>
+                            <input required type="text" name="mnumber"  #mnumber="ngModel" ngModel  class="form-control phone" maxlength="28" /> 
+                </div>
+                
+                <div class="form-group">
+                    <label for="email"><span class="req">* </span> Email Address: </label> 
+                        <input class="form-control" required type="text" name="email"  #email="ngModel" ngModel />   
+                            <div class="status" id="status"></div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="aemail"><span class="req">* </span> Alternate Address: </label> 
+                        <input class="form-control" required type="text" name="aemail"  #aemail="ngModel" ngModel  />   
+                            <div class="status" id="status"></div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="waddr"><span class="req">* </span> Web Address: </label>
+                        <input required name="waddr" type="text" class="form-control inputpass"  #waddr="ngModel" ngModel  minlength="4" maxlength="16"  /> 
+                </div>
+    
+                
+    
+                <div class="form-group">
+                    <input type="submit" [disabled]="!frm.valid"  class="btn btn-success">
+                    <a [routerLink]="['/view-clients']" >View Clients</a>
+                </div>
+     
+    
+                </fieldset>
+        </div>
+    </div>
+      </form><!-- ends register form -->
+

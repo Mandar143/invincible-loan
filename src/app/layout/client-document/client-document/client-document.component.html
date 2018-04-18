@@ -1,0 +1,44 @@
+<div [@routerTransition]>
+  
+
+  <div class="row">
+      <div class="col-lg-6">
+
+          <form #frm="ngForm" (ngSubmit)="register(frm)">
+              
+
+            <div class="form-group">
+                <label>Select Client</label>
+                <select  class="form-control">
+                    <option disabled>-----Select-----</option>
+                    <option *ngFor="let clientData of clientData" value="{{clientData._id}}">{{clientData.cname}}</option>
+                   
+                </select>
+            </div>
+
+            <angular2-multiselect [data]="dropdownList"  
+                [settings]="dropdownSettings" 
+                (onSelect)="onItemSelect($event)" 
+                (onDeSelect)="OnItemDeSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+                (onDeSelectAll)="onDeSelectAll($event)">
+            </angular2-multiselect>
+        
+            <div class="form-group">
+              <label>Multiple Selects</label>
+              <select    class="form-control">
+                <option disabled>-----Select-----</option>
+                <option *ngFor="let docs of docs" value="{{docs.category_id}}">{{docs.category_name}}</option>
+                 
+              </select>
+            </div>  
+              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="reset" class="btn btn-secondary">Reset Button</button>
+
+          </form>
+
+      </div>
+
+  </div>
+  <!-- /.row -->
+</div>
