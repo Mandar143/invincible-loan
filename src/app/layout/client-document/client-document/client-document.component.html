@@ -2,37 +2,47 @@
   
 
   <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-10">
 
-          <form #frm="ngForm" (ngSubmit)="register(frm)">
+          <form #frm="ngForm" (ngSubmit)="register(frm.value)">
               
 
             <div class="form-group">
                 <label>Select Client</label>
-                <select  class="form-control">
-                    <option disabled>-----Select-----</option>
-                    <option *ngFor="let clientData of clientData" value="{{clientData._id}}">{{clientData.cname}}</option>
+                <select name="client_id" #cli_id="ngModel" ngModel class="form-control">
+                    <option  value="" disabled>-----Select-----</option>
+                    <option *ngFor="let clientData of clientData" value="{{clientData.client_id}}">{{clientData.cname}}</option>
                    
                 </select>
             </div>
 
-            <angular2-multiselect [data]="dropdownList"  
-                [settings]="dropdownSettings" 
-                (onSelect)="onItemSelect($event)" 
-                (onDeSelect)="OnItemDeSelect($event)"
-                (onSelectAll)="onSelectAll($event)"
-                (onDeSelectAll)="onDeSelectAll($event)">
-            </angular2-multiselect>
-        
-            <div class="form-group">
-              <label>Multiple Selects</label>
-              <select    class="form-control">
-                <option disabled>-----Select-----</option>
-                <option *ngFor="let docs of docs" value="{{docs.category_id}}">{{docs.category_name}}</option>
-                 
-              </select>
-            </div>  
+           
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Select Document Category</label>
+                    <div *ngFor="let docs of docs">
+                        <label for="role_{{docs.category_id}}">
+                          <input name="category_id[]" #cat_id[]="ngModel" ngModel   type="checkbox"  (change)="onChange(docs.category_id, $event.target.checked)">{{docs.category_name}} &nbsp;&nbsp;
+                        </label>
+                     </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label>Select Document</label>
+                    <div *ngFor="let docs2 of docs2">
+                        <label for="role_{{docs2.document_id}}">
+                          <input  name="document_id[]" #doc_id[]="ngModel" ngModel type="checkbox"  (change)="onChange1(docs2.document_id, $event.target.checked)">{{docs2.dname}} &nbsp;&nbsp;
+                        </label>
+                     </div>
+                </div>
+            </div>
+           
+
+            
+            
+            
               <button type="submit" class="btn btn-success">Submit</button>
+              <button type="button" id="btnadd" class="btn btn-success" (click)=sendEmail(cli_id.value,cat_id.value,doc_id.value)>Send Email</button>
               <button type="reset" class="btn btn-secondary">Reset Button</button>
 
           </form>

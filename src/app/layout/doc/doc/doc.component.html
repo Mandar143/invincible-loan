@@ -1,3 +1,57 @@
-<p>
-  doc works!
-</p>
+<div [@routerTransition]>
+  
+
+  <div class="row">
+      <div class="col-lg-6">
+
+          <form #frm="ngForm" (ngSubmit)="adddoc(frm.value)">
+                    
+            <div class="form-group">
+              <label>Select Document Category</label>
+              <select   name="category_id" [(ngModel)]="cat_id" class="form-control" #category_id="ngModel" ngModel >
+                <option value="" disabled>-----Select-----</option>
+                <option *ngFor="let docs1 of docs1" value="{{docs1.category_id}}">{{docs1.category_name}}</option>
+                 
+              </select>
+            </div> 
+            <div class="form-group">
+              <label>Document Name</label>
+             
+              <input type="text" placeholder="Document name" name="dname" [(ngModel)]="dm" class="form-control" #dname="ngModel" ngModel   required >
+              
+            </div>
+            <input type="hidden" class="form-control" name="document_id" #id [(ngModel)]="id1">
+              <button type="submit" class="btn btn-success" >Submit</button>
+              <input type="button" id="btnadd" class="btn btn-success"   value="Update" (click)='updatedoc(dname.value,category_id.value,id.value)' >
+              <button type="reset"  class="btn btn-secondary">Reset Button</button>
+
+          </form>
+
+      </div>
+
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <tr class="table-danger">
+        <th style="text-align: center;">Sr.No</th>
+        <th style="text-align: center;">Document Category Name</th>
+        <th style="text-align: center;">Document Name</th>
+        <th style="text-align: center;">Options</th>
+
+      </tr>
+      <tr *ngFor="let docs of docs ;let i=index">
+        <td style="text-align: center;">{{i+1}}</td>
+        <td style="text-align: center;">{{docs.category_name}}</td>
+        <td style="text-align: center;">{{docs.dname}}</td>
+
+        <td style="text-align: center;">
+           
+          <button  type="button" class="btn btn-warning" (click)="Onedit(docs.document_id)">Edit</button>
+          <button type="button" class="btn btn-warning" (click)="Ondelete(docs.document_id)">Delete</button>
+        </td>
+
+      </tr>
+
+    </table>
+  <!-- /.row -->
+</div>
