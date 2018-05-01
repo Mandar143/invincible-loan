@@ -25,6 +25,7 @@ export class ClientDocumentComponent implements OnInit {
   docs1: any
   docs2: any
   abc = [];
+  docu=[]
   dropdownList: any
   selectedItems: any;
   dropdownSettings: any;
@@ -88,48 +89,55 @@ export class ClientDocumentComponent implements OnInit {
 
   }
   onChange(email: string, isChecked: boolean) {
+  
     const emailFormArray = <FormArray>this.myForm.controls.useremail;
-
+   
     if (isChecked) {
-
+      this.docu.length=0;
       emailFormArray.push(new FormControl(email));
-    } else {
-      let index = emailFormArray.controls.findIndex(x => x.value == email)
-      emailFormArray.removeAt(index);
-    }
-    console.log(emailFormArray.value)
-    for (var i = 0; i < emailFormArray.value.length; i++) {
-      let doc = {
-        "category_id": emailFormArray.value[i]
-      }
-      console.log(doc);
-      this.http.post(`http://localhost/invincible-db/sel-cat-document.php`, doc, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
+      console.log(emailFormArray.value)
+      for (var i = 0; i < emailFormArray.value.length; i++) {
+        let doc = {
+          "category_id": emailFormArray.value[i]
+        }
+        console.log(doc);
+        this.http.post(`http://localhost/invincible-db/sel-cat-document.php`, doc, {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+          })
+        }
+        ).subscribe(data => {
+         console.log(data)
+          this.docs2 = data
+          let pqr={
+            "category_id":doc,
+            "data":data
+          }
+         
+          this.docs2.forEach(element => {
+            this.docu.push(element);
+          });
+       //  console.log(this.docu)
         })
       }
-      ).subscribe(data => {
-        console.log(data)
-        this.docs2 = data
-
-
-      })
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == email)
+      //console.log(index)
+      emailFormArray.removeAt(index);
+     // emailFormArray.reset(index)
+      this.docu.length=0;
     }
-
-
-
-
   }
 
   onChange1(document_id: number, isChecked: boolean) {
     const emailFormArray1 = <FormArray>this.myForm2.controls.useremail1;
-
+    
     if (isChecked) {
-
       emailFormArray1.push(new FormControl(document_id));
     } else {
       let index = emailFormArray1.controls.findIndex(x => x.value == document_id)
       emailFormArray1.removeAt(index);
+      
     }
     console.log(emailFormArray1.value)
 
@@ -142,8 +150,8 @@ export class ClientDocumentComponent implements OnInit {
 
     let arr={
       "client_id":frm.client_id,
-      "category_id":[this.myForm.controls.useremail.value[0]],
-      "document_id":[this.myForm2.controls.useremail1.value[0]],
+      "category_id":[this.myForm.controls.useremail.value],
+      "document_id":[this.myForm2.controls.useremail1.value],
 
     }
     console.log(arr)

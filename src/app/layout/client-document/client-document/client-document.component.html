@@ -29,9 +29,9 @@
 
                 <div class="col-md-6">
                     <label>Select Document</label>
-                    <div *ngFor="let docs2 of docs2">
-                        <label for="role_{{docs2.document_id}}">
-                          <input  name="document_id[]" #doc_id[]="ngModel" ngModel type="checkbox"  (change)="onChange1(docs2.document_id, $event.target.checked)">{{docs2.dname}} &nbsp;&nbsp;
+                    <div *ngFor="let docu of docu">
+                        <label for="role_{{docu.document_id}}">
+                          <input  name="document_id[]" #doc_id[]="ngModel" ngModel type="checkbox"  (change)="onChange1(docu.document_id, $event.target.checked)">{{docu.dname}} &nbsp;&nbsp;
                         </label>
                      </div>
                 </div>

@@ -11,12 +11,24 @@ export class ClientService {
 
   registerUser(rg: Client){ 
     console.log(rg)
+    if(rg.client_id==null){
+
     return this.http.post('http://localhost/invincible-db/client-db.php',rg,{
 
-  headers:new HttpHeaders({
-    'Content-Type':'application/json'
-  })
-})
+      headers:new HttpHeaders({
+        'Content-Type':'application/json'
+      })
+    })
+    }
+    else{
+
+    return this.http.post('http://localhost/invincible-db/client-db.php',rg,{
+
+      headers:new HttpHeaders({
+        'Content-Type':'application/json'
+      })
+    })
+    }
   }
 
   deleteOne(client_id:string){

@@ -11,6 +11,7 @@ export class ClientDocumentService {
 
   savedata(dc:any){
     console.log(dc)
+    
     return this.http.post('http://localhost/invincible-db/client-category-doc.php',dc,{
 
      headers:new HttpHeaders({

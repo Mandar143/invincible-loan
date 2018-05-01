@@ -74,17 +74,28 @@ export class AddClientComponent implements OnInit {
 
   register(frm){
 
-    console.log(frm.value)
+    console.log(frm.client_id)
+    if(frm.client_id==null){
+      this.reg.registerUser(frm as Client).subscribe(
+        res=>console.log(res),
+        err=>console.log(err),
+        ()=>{
+          this.resmsg="Record Saved Successfully..."
+          this.toastr.success(`New Record Added Successfully`,'Clients Register')
+          
+        })
+    }
+    else{
+      this.reg.registerUser(frm as Client).subscribe(
+        res=>console.log(res),
+        err=>console.log(err),
+        ()=>{
+          this.resmsg="Record Updated Successfully..."
+          this.toastr.success(`New Record Updated Successfully`,'Clients Register')
+          
+        })
+    }
     
-    this.reg.registerUser(frm.value as Client).subscribe(
-      res=>console.log(res),
-      err=>console.log(err),
-      ()=>{
-        this.resmsg="Record Saved Successfully..."
-        this.toastr.success(`New Record Added Successfully`,'Clients Register')
-        
-      }
-    )
 
   }
 }
