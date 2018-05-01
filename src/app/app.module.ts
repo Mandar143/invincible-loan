@@ -11,8 +11,9 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 import { ClientsModule } from './layout/clients/clients.module';
-import { ViewClientComponent } from './layout/clients/view-client/view-client.component';
+
 import { AddClientComponent } from './layout/clients/add-client/add-client.component';
+import {ToastrModule} from 'ngx-toastr'
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -29,7 +30,7 @@ export function createTranslateLoader(http: HttpClient) {
         BrowserAnimationsModule,
         HttpClientModule,
         FormsModule,
-       
+        ToastrModule.forRoot(),
         
       
         ReactiveFormsModule,

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-import { ViewClientComponent } from './clients/view-client/view-client.component';
+
+
 
 const routes: Routes = [
     
@@ -11,10 +12,9 @@ const routes: Routes = [
 
         children: [
             { path: '', redirectTo: 'dashboard' },
-            
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path:'add-clients',loadChildren:'./clients/clients.module#ClientsModule'},
-            { path:'view-clients',loadChildren:'./clients/clients.module#ClientsModule'},
+            { path:'view-clients',loadChildren:'./view-clients/view-clients.module#ViewClientsModule'},
             { path:'documents',loadChildren:'./document/document.module#DocumentModule'},
             { path:'doc',loadChildren:'./doc/doc.module#DocModule'},
             { path:'client-documents',loadChildren:'./client-document/client-document.module#ClientDocumentModule'},

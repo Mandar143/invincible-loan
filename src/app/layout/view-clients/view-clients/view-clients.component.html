@@ -17,7 +17,7 @@
         <td>{{clientData.email}}</td>
         <td>
             <a class="btn btn-primary" [routerLink]="['view']" >View</a>
-            <a class="btn btn-primary" [routerLink]="['add-clients']" [queryParams]="{id: clientData.client_id}">Edit</a>
+            <a class="btn btn-primary" [routerLink]="['/add-clients',{ 'client_id': clientData.client_id}]">Edit</a>
             <a class="btn btn-primary" (click)="onDelete(clientData.client_id)" >Delete</a>
       </td>
       </tr>      

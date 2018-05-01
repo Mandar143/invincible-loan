@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AddClientComponent } from './add-client/add-client.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ViewClientComponent } from './view-client/view-client.component';
+
 import { Routes, RouterModule } from '@angular/router';
 import { ClientsRoutingModule } from './clients-routing.module';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
@@ -17,6 +17,6 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2
     RouterModule,
     ReactiveFormsModule
   ],
-  declarations: [AddClientComponent, ViewClientComponent]
+  declarations: [AddClientComponent]
 })
 export class ClientsModule { }

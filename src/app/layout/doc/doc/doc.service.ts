@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class DocService {
-
+  docs :any
   constructor(
     private http: HttpClient
   ) { }
@@ -53,5 +53,13 @@ return  this.http.post(`http://localhost/invincible-db/del-document.php`,doc,{
 )
 }
 
+abc(){
+ return this.http.get('http://localhost/invincible-db/sel-cat-document.php')
+  .map((data:Response)=>{
+    return data
+  }).toPromise().then(x=>{
+    this.docs=x;
+  })
+}
 
 }

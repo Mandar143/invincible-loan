@@ -1,5 +1,6 @@
 export class Client{
     client_id: string
+    client_date:string
     cname: string
     paddress:   string
     saddress:  string

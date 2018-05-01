@@ -2,6 +2,7 @@ import { Component, OnInit,EventEmitter, Output } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { routerTransition } from '../../../router.animations';
 import { DocService} from './doc.service';
+import  { ToastrService } from 'ngx-toastr'
 
 @Component({
   selector: 'app-doc',
@@ -23,7 +24,8 @@ export class DocComponent implements OnInit {
   cat_id:number
   constructor(
     private http: HttpClient,
-    private document:DocService
+    private document:DocService,
+    private toastr:ToastrService
   ) { 
     this.http.get('http://localhost/invincible-db/select-category.php').subscribe(data => {
       console.log(data)
@@ -42,13 +44,7 @@ export class DocComponent implements OnInit {
 
   ngOnInit() {
   }
-  valueChanged() { // You can give any function name
-    this.counter = this.counter + 1;
-    this.valueChange.emit(this.counter);
-}
-displayCounter(count) {
-  console.log(count);
-}
+  
 
   adddoc(frm : any){
     console.log(frm)
@@ -59,6 +55,8 @@ displayCounter(count) {
      err=>console.log(err),
      ()=>{
        this.resMsg="Record Saved Successfully......"
+       this.document.abc();
+       this.toastr.success(`New Record Added Successfully`,'Document Register')
      }
    )
   }
@@ -66,7 +64,6 @@ displayCounter(count) {
 
   Onedit(_id:string)
   {
-  //  console.log(dname)
    console.log(_id)
    this.arr={
      "document_id":_id
