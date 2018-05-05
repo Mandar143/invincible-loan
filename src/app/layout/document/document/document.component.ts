@@ -69,8 +69,6 @@ updateDocument1(abc : any){
     
   }
 
-  
-
   save(dname : string){
     // console.log(dname)
     this.updateDocument.emit(this.docs);
