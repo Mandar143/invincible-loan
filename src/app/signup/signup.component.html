@@ -8,20 +8,29 @@
                    
 
                     <div class="form-group">
-                        <input type="email" class="form-control input-underline input-lg" name="user_email" #user_email="ngModel" ngModel placeholder="Email">
+                        <input type="email" required  class="form-control input-underline input-lg" name="user_email" #user_email="ngModel" ngModel placeholder="Email">
+                        <small [hidden]="user_email.valid || (user_email.pristine && !frm.submitted)">
+                            Email is required and format should be <i>john@doe.com</i>.
+                        </small>
                     </div>
                     
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" name="password" #password="ngModel" ngModel placeholder="Password">
+                        <input type="password"  class="form-control input-underline input-lg"  name="password" #password="ngModel" ngModel placeholder="Password" validateEqual="confirmPassword" reverse="true">
+                        
+                       
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" validateEqual="password" name="confirm_password" #confirm_password="ngModel" ngModel placeholder="Repeat Password">
+                        <input type="password" class="form-control input-underline input-lg" validateEqual="password" name="confirmPassword" #confirmPassword="ngModel" ngModel placeholder="Repeat Password">
+                        <small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !frm.submitted)">
+                            Password mismatch
+                        </small>
+                        
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control input-underline input-lg"  name="role" placeholder="Role" #role="ngModel" ngModel>
                     </div>
                 </div>
-                <button type="submit" class="btn rounded-btn">Register</button>
+                <button type="submit"  class="btn rounded-btn">Register</button>
                 <!-- <a class="btn rounded-btn" [routerLink]="['/dashboard']"> Register </a>&nbsp; -->
                 <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
             </form>

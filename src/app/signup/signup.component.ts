@@ -19,12 +19,12 @@ export class SignupComponent implements OnInit {
 
     register_user(frm:any){
         console.log(frm)
-        this.signup.savedata(frm).subscribe(
-            res=>console.log(res),
-            err=>console.log(err),
-            ()=>{
-              this.resMsg="Record Saved Successfully......"
-            }
-          )
+        // this.signup.savedata(frm).subscribe(
+        //     res=>console.log(res),
+        //     err=>console.log(err),
+        //     ()=>{
+        //       this.resMsg="Record Saved Successfully......"
+        //     }
+        //   )
     }
 }

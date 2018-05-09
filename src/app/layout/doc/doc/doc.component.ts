@@ -22,6 +22,7 @@ export class DocComponent implements OnInit {
   dm:string
   id1:number
   cat_id:number
+  wheather:any
   constructor(
     private http: HttpClient,
     private document:DocService,
@@ -40,6 +41,18 @@ export class DocComponent implements OnInit {
 
      
      })
+
+     this.http.get('http://samples.openweathermap.org/data/2.5/weather?q=pune&appid=b6907d289e10d714a6e88b30761fae22',{
+      headers: new HttpHeaders({
+       
+      'Content-Type': 'application/json'
+      
+     
+    })
+    }).subscribe(data=>{  
+console.log(data)
+this.wheather= data
+})
   }
 
   ngOnInit() {
