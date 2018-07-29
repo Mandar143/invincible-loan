@@ -11,7 +11,64 @@ import {Doc} from './doc';
   providers:[DocumentService]
 })
 export class DocumentComponent implements OnInit {
-   resmsg:string
+   
+  
+  defaultSettingsMeetings = {
+    columns: {
+      category_name: {
+        title: 'Document Category'
+      },
+     
+     
+    },
+    mode: 'inline', // inline|external|click-to-edit
+    selectMode: 'single', // single|multi
+    hideHeader: false,
+   
+    hideSubHeader: false,
+    actions: {
+      columnTitle: 'Actions',
+      add: true,
+      edit: true,
+      delete: false,
+      custom: [],
+      position: 'right', // left|right
+    },
+    filter: {
+      inputClass: '',
+    },
+    edit: {
+      inputClass: '',
+      editButtonContent: 'Edit',
+      saveButtonContent: 'Update',
+      cancelButtonContent: 'Cancel',
+      confirmSave: true,
+    },
+    add: {
+      inputClass: '',
+      addButtonContent: 'Add New',
+      createButtonContent: 'Create',
+      cancelButtonContent: 'Cancel',
+      confirmCreate: true,
+    },
+    delete: {
+      deleteButtonContent: 'Delete',
+      confirmDelete: false,
+    },
+    attr: {
+      id: '',
+      class: 'table table-striped table-bordered',
+    },
+    noDataMessage: 'No data found',
+    
+    pager: {
+      display: true,
+      perPage: 10,
+    },
+    rowClassFunction: () => ""
+  };
+  
+  resmsg:string
    dname:string
    dm:string
    msg:string
@@ -36,8 +93,8 @@ export class DocumentComponent implements OnInit {
       this.docs=data
       //location.reload();
     })
-    
-    
+    var time=this.formatAMPM(9,20);
+    console.log(time)
   }
 
 open(content) {
@@ -140,4 +197,46 @@ updateDocument1(abc : any){
     }
 
   
+
+    formatAMPM(hour,minute) {
+      var hours = hour;
+      var minutes = minute;
+      console.log(minutes);
+  
+      // var ampm = hours >= 12 ? 'pm' : 'am';
+      // hours = hours % 12;
+      // hours = hours ? hours : 12; // the hour '0' should be '12'
+      // minutes=minutes%10;
+     
+      // if(minutes=="00"){
+      //   minutes="00"  
+      // }
+      // else {
+      //   minutes = minutes < 10 ? '0'+minutes : minutes;
+      // }
+    
+      hours = hours < 10 ? '0'+hours : hours;
+      var dateiso=new Date('2018-05-01'+' '+hours+':'+minutes+':'+'00').toISOString();
+      var dateiso2=new Date('2018-05-01  10:20:00').toISOString();
+
+
+     // var diff=dateiso-dateiso2;
+
+
+      var abc=this.ISODateString(dateiso)
+      var d = new Date(dateiso);
+      var ampm = (d.getHours() >= 12) ? "PM" : "AM";
+      var hrs = (d.getHours() >= 12) ? d.getHours()-12 : d.getHours();
+
+   console.log( hours+' : '+d.getMinutes()+' '+ampm);
+      return abc;
+     
+     // var strTime = hours + ':' + minutes + ' ' + ampm;
+      //return strTime;
+    }
+
+
+  ISODateString(d) {
+      
+  }
 }

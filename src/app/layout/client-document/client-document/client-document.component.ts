@@ -63,9 +63,14 @@ export class ClientDocumentComponent implements OnInit {
     })
 
     this.http.get('http://localhost/invincible-db/sel-cat-document.php').subscribe(data => {
-      console.log(data)
+    //  console.log(data)
       this.docs1 = data
-
+      this.docs1.forEach(element => {
+        
+        this.itemList.push({'value':element.document_id,'display':element.dname})
+       
+      });
+      
 
     })
 
@@ -147,21 +152,21 @@ export class ClientDocumentComponent implements OnInit {
 
 
   register(frm: any) {
+    console.log(frm)
+    // let arr={
+    //   "client_id":frm.client_id,
+    //   "category_id":[this.myForm.controls.useremail.value],
+    //   "document_id":[this.myForm2.controls.useremail1.value],
 
-    let arr={
-      "client_id":frm.client_id,
-      "category_id":[this.myForm.controls.useremail.value],
-      "document_id":[this.myForm2.controls.useremail1.value],
-
-    }
-    console.log(arr)
-    this.clientDoc.savedata(arr).subscribe(
-      res=>console.log(res),
-      err=>console.log(err),
-      ()=>{
-        this.resMsg="Record Saved Successfully......"
-      }
-    )
+    // }
+    // console.log(arr)
+    // this.clientDoc.savedata(arr).subscribe(
+    //   res=>console.log(res),
+    //   err=>console.log(err),
+    //   ()=>{
+    //     this.resMsg="Record Saved Successfully......"
+    //   }
+    // )
   }
 
   sendEmail(client_id:number,category_id:any,document_id:any){

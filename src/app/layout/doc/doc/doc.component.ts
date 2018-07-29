@@ -12,6 +12,8 @@ import  { ToastrService } from 'ngx-toastr'
   providers:[DocService]
 })
 export class DocComponent implements OnInit {
+  defaultSettingsMeetings: { columns: { category_id: { type: { title: string; type: string; editor: { type: string; config: { list: { value: string; title: string; }[]; }; }; }; }; dname: { title: string; }; }; mode: string; selectMode: string; hideHeader: boolean; hideSubHeader: boolean; actions: { columnTitle: string; add: boolean; edit: boolean; delete: boolean; custom: any[]; position: string; }; filter: { inputClass: string; }; edit: { inputClass: string; editButtonContent: string; saveButtonContent: string; cancelButtonContent: string; confirmSave: boolean; }; add: { inputClass: string; addButtonContent: string; createButtonContent: string; cancelButtonContent: string; confirmCreate: boolean; }; delete: { deleteButtonContent: string; confirmDelete: boolean; }; attr: { id: string; class: string; }; noDataMessage: string; pager: { display: boolean; perPage: number; }; rowClassFunction: () => string; };
+  data1=[];
   @Output() valueChange = new EventEmitter();
   counter = 0;
 
@@ -29,30 +31,93 @@ export class DocComponent implements OnInit {
     private toastr:ToastrService
   ) { 
     this.http.get('http://localhost/invincible-db/select-category.php').subscribe(data => {
-      console.log(data)
+      //console.log(data)  
      this.docs1=data
-
-     
-     })
-
-     this.http.get('http://localhost/invincible-db/sel-cat-document.php').subscribe(data => {
-      console.log(data)
-     this.docs=data
-
-     
-     })
-
-     this.http.get('http://samples.openweathermap.org/data/2.5/weather?q=pune&appid=b6907d289e10d714a6e88b30761fae22',{
-      headers: new HttpHeaders({
-       
-      'Content-Type': 'application/json'
-      
-     
+     this.docs1.forEach(element => {
+      //console.log(element)
+      this.data1.push({"value":element.category_id,"title":element.category_name})
+       })
     })
-    }).subscribe(data=>{  
-console.log(data)
-this.wheather= data
-})
+
+     
+     this.http.get('http://localhost/invincible-db/sel-cat-document.php').subscribe(data => {
+     console.log(data)
+     this.docs=data
+    })
+
+ 
+console.log(this.data1)
+
+// this.defaultSettingsMeetings = {
+//   columns: {
+//     category_id: {
+//       title: 'Full Name',
+//       filter: {
+//         type: 'list',
+//         config: {
+//           selectText: 'Select...',
+//           list: [
+//             { value: 'Glenna Reichert', title: 'Glenna Reichert' },
+//             { value: 'Kurtis Weissnat', title: 'Kurtis Weissnat' },
+//             { value: 'Chelsey Dietrich', title: 'Chelsey Dietrich' },
+//           ],
+//         },
+//       },
+//     },
+//     dname: {
+//       title: 'Document'
+//     },
+    
+   
+//   },
+//   mode: 'inline', // inline|external|click-to-edit
+//   selectMode: 'single', // single|multi
+//   hideHeader: false,
+ 
+//   hideSubHeader: false,
+//   actions: {
+//     columnTitle: 'Actions',
+//     add: true,
+//     edit: true,
+//     delete: false,
+//     custom: [],
+//     position: 'right', // left|right
+//   },
+//   filter: {
+//     inputClass: '',
+//   },
+//   edit: {
+//     inputClass: '',
+//     editButtonContent: 'Edit',
+//     saveButtonContent: 'Update',
+//     cancelButtonContent: 'Cancel',
+//     confirmSave: true,
+//   },
+//   add: {
+//     inputClass: '',
+//     addButtonContent: 'Add New',
+//     createButtonContent: 'Create',
+//     cancelButtonContent: 'Cancel',
+//     confirmCreate: true,
+//   },
+//   delete: {
+//     deleteButtonContent: 'Delete',
+//     confirmDelete: false,
+//   },
+//   attr: {
+//     id: '',
+//     class: 'table table-striped table-bordered',
+//   },
+//   noDataMessage: 'No data found',
+  
+//   pager: {
+//     display: true,
+//     perPage: 10,
+//   },
+//   rowClassFunction: () => ""
+// };
+
+
   }
 
   ngOnInit() {

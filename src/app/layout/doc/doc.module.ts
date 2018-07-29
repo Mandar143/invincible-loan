@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { DocRoutingModule } from './doc-routing.module';
 import { DocComponent } from './doc/doc.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,6 +11,7 @@ import { HiddenDirective } from './new-doc/hidden.directive';
   imports: [
     CommonModule,
     DocRoutingModule,
+    Ng2SmartTableModule,
     FormsModule,
     ReactiveFormsModule
   ],

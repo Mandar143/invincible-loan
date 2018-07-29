@@ -5,8 +5,10 @@ import { ClientDocumentRoutingModule } from './client-document-routing.module';
 import { ClientDocumentComponent } from './client-document/client-document.component';
 import { FormsModule, ReactiveFormsModule,FormBuilder,FormGroup,Validators,FormControl } from '@angular/forms';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+import { TagInputModule } from 'ngx-chips';
 @NgModule({
   imports: [
+    TagInputModule,
     CommonModule,
     AngularMultiSelectModule,
     ClientDocumentRoutingModule,

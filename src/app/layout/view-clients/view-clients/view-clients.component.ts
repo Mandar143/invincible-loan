@@ -10,8 +10,75 @@ import { HttpClient } from '@angular/common/http';
   providers: [ClientService]
 })
 export class ViewClientsComponent implements OnInit {
-  clientData:any
+ clientData:any
 resMsg: string
+
+defaultSettingsMeetings = {
+  columns: {
+    cname: {
+      title: 'Client Name'
+    },
+    mnumber: {
+      title: 'Mobile Number'
+    },
+    email: {
+      title: 'Email Address'
+    },
+    client_date: {
+      title: 'Client Date'
+    },
+   
+  },
+  mode: 'inline', // inline|external|click-to-edit
+  selectMode: 'single', // single|multi
+  hideHeader: false,
+ 
+  hideSubHeader: false,
+  actions: {
+    columnTitle: 'Actions',
+    add: true,
+    edit: true,
+    delete: false,
+    custom: [],
+    position: 'right', // left|right
+  },
+  filter: {
+    inputClass: '',
+  },
+  edit: {
+    inputClass: '',
+    editButtonContent: 'Edit',
+    saveButtonContent: 'Update',
+    cancelButtonContent: 'Cancel',
+    confirmSave: true,
+  },
+  add: {
+    inputClass: '',
+    addButtonContent: 'Add New',
+    createButtonContent: 'Create',
+    cancelButtonContent: 'Cancel',
+    confirmCreate: true,
+  },
+  delete: {
+    deleteButtonContent: 'Delete',
+    confirmDelete: false,
+  },
+  attr: {
+    id: '',
+    class: 'table table-striped table-bordered',
+  },
+  noDataMessage: 'No data found',
+  
+  pager: {
+    display: true,
+    perPage: 10,
+  },
+  rowClassFunction: () => ""
+};
+
+
+
+
   constructor(
     private http: HttpClient,
     private cliSer: ClientService

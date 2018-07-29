@@ -1,4 +1,4 @@
-
+<!-- 
   <table class="table table-striped table-bordered">
     <thead class="bg-primary">
       <tr class="">
@@ -22,6 +22,11 @@
       </td>
       </tr>      
     </tbody>
-  </table>
+  </table> -->
+  <h4>Clients Details</h4>
+  <ng2-smart-table [settings]="defaultSettingsMeetings" [source]="clientData" (custom)="onCustom($event)"></ng2-smart-table>
+
+
+
 
 

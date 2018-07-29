@@ -6,7 +6,8 @@
 
           <form #frm="ngForm" (ngSubmit)="register(frm.value)">
               
-
+            <div class="row">
+                <div class="col-md-6">
             <div class="form-group">
                 <label>Select Client</label>
                 <select name="client_id" #cli_id="ngModel" ngModel class="form-control">
@@ -15,9 +16,10 @@
                    
                 </select>
             </div>
-
-           
-            <div class="row">
+                </div>
+            </div>
+            
+            <!-- <div class="row">
                 <div class="col-md-6">
                     <label>Select Document Category</label>
                     <div *ngFor="let docs of docs">
@@ -33,18 +35,27 @@
                         <label for="role_{{docu.document_id}}">
                           <input  name="document_id[]" #doc_id[]="ngModel" ngModel type="checkbox"  (change)="onChange1(docu.document_id, $event.target.checked)">{{docu.dname}} &nbsp;&nbsp;
                         </label>
-                     </div>
+                    </div>
                 </div>
+            </div> -->
+            <div class="row">
+                <div class="col-md-6">
+            <tag-input  [onlyFromAutocomplete]="true" class="form-control input-underline input-lg" [placeholder]="'Add department'" [secondaryPlaceholder]="'Department'" name="tags"  [(ngModel)]="dept" #tags="ngModel" ngModel required placeholder="Enter the department">
+                <tag-input-dropdown 
+                                    [autocompleteItems]="itemList">
+                                    
+                </tag-input-dropdown>
+            </tag-input>
             </div>
-           
-
-            
-            
+            </div>
+            <div class="row">
+                <div class="col-md-6">
             
               <button type="submit" class="btn btn-success">Submit</button>
               <button type="button" id="btnadd" class="btn btn-success" (click)=sendEmail(cli_id.value,cat_id.value,doc_id.value)>Send Email</button>
               <button type="reset" class="btn btn-secondary">Reset Button</button>
-
+                    </div>
+                    </div>
           </form>
 
       </div>
