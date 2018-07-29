@@ -1,7 +1,48 @@
-<div [@routerTransition]>
-  
-
-  <!-- <ng2-smart-table [settings]="defaultSettingsMeetings" [source]="docs" (custom)="onCustom($event)"></ng2-smart-table> -->
+<div >
 
 
+  <div class="row">
+    <div class="col-lg-10">
+
+      <form #frm="ngForm" (ngSubmit)="register(frm.value)">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Select Document Category</label>
+              <select name="category_id" #category_id="ngModel" ngModel class="form-control" (change)="selctCat(category_id.value)">
+                <option value="" disabled selected>-----Select-----</option>
+                <option *ngFor="let docs1 of docs1" value="{{docs1.category_id}}" >{{docs1.category_name}}</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+             
+            <tag-input  class="form-control input-underline input-lg" [placeholder]="'Add Document'" [secondaryPlaceholder]="'Document'"
+              name="tags"  #tags="ngModel" ngModel required placeholder="Enter the Document">
+              <tag-input-dropdown [autocompleteItems]="itemList">
+
+              </tag-input-dropdown>
+            </tag-input>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+
+            <button type="submit" class="btn btn-success">Submit</button>
+            
+            <button type="reset" class="btn btn-secondary">Reset Button</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+  <!-- /.row -->
 </div>

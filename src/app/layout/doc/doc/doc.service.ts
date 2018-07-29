@@ -12,7 +12,7 @@ export class DocService {
     console.log(dc)
     let arr={
       "category_id":dc.category_id,
-      "dname":dc.dname,
+      "dname":dc.tags[0].display,
       "document_id":dc.document_id
     }
     console.log(arr)

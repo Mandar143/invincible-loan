@@ -11,8 +11,8 @@ const routes: Routes = [
         component: LayoutComponent,
 
         children: [
-            { path: '', redirectTo: 'dashboard' },
-            { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+            { path: '', redirectTo: 'view-clients' },
+          //  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path:'add-clients',loadChildren:'./clients/clients.module#ClientsModule'},
             { path:'view-clients',loadChildren:'./view-clients/view-clients.module#ViewClientsModule'},
             { path:'documents',loadChildren:'./document/document.module#DocumentModule'},

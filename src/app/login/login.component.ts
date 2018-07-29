@@ -27,7 +27,9 @@ export class LoginComponent implements OnInit {
            console.log(data['status']);
            if(parseInt(data['status'])==200){
             localStorage.setItem('isLoggedin', 'true');
-            this.router.navigate(['/dashboard']);
+            localStorage.setItem('email', frm.user_email);
+            
+            this.router.navigate(['/view-clients']);
            }
            else{
             this.router.navigate(['/login']);

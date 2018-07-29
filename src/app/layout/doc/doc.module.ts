@@ -7,13 +7,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewDocComponent } from './new-doc/new-doc.component';
 import { ColorDirective } from './new-doc/color.directive';
 import { HiddenDirective } from './new-doc/hidden.directive';
+import { HttpClientModule } from '@angular/common/http';
+import { FormBuilder,FormGroup,Validators,FormControl } from '@angular/forms';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+import { TagInputModule } from 'ngx-chips';
 @NgModule({
   imports: [
     CommonModule,
     DocRoutingModule,
     Ng2SmartTableModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TagInputModule
   ],
   declarations: [DocComponent, NewDocComponent, ColorDirective, HiddenDirective]
 })

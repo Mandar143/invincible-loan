@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
-
+    email:string;
     constructor(private translate: TranslateService, public router: Router) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
                 this.toggleSidebar();
             }
         });
+        this.email=localStorage.getItem('email');
     }
 
     ngOnInit() {}

@@ -1,8 +1,8 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <div class="list-group">
-        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <!-- <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
-        </a>
+        </a> -->
         <div class="nested-menu" (click)="addExpandClass('pages')">
             <a  [routerLinkActive]="['router-link-active']" class="list-group-item">
                 <i class="fa fa-fw fa-address-book"></i>&nbsp;{{ 'Clients' | translate }}
